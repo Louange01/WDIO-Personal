@@ -10,7 +10,7 @@ describe('Dropdown menue', () => {
 
     })
 })
-describe.skip('Dropdown handling with selectByVisibleText ', () => {
+describe.only('Dropdown handling with selectByVisibleText ', () => {
     it('should select dropdown by visible text', async () => {
         await browser.url('https://the-internet.herokuapp.com/dropdown');
         await Dropdown.selectOptionByText('Option 1');

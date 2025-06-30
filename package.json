@@ -2,7 +2,7 @@
   "name": "webdriverio_personal",
   "type": "module",
   "devDependencies": {
-    "@wdio/cli": "^9.14.0",
+    "@wdio/cli": "^9.16.2",
     "@wdio/dot-reporter": "^9.14.0",
     "@wdio/local-runner": "^9.14.0",
     "@wdio/mocha-framework": "^9.14.0",

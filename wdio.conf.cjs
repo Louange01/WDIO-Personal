@@ -1,3 +1,11 @@
+const url = require("./url.cjs")
+const ENV = process.env.ENV
+
+if (!ENV || !['qa', 'main', 'dev', 'staging'].includes(ENV)) {
+    console.log('Please use the following format when running the test script: ENV=qa|dev|staging')
+    process.exit()
+}
+
 exports.config = {
     //
     // ====================
@@ -90,10 +98,11 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    // baseUrl: 'http://the-internet.herokuapp.com',
+    baseUrl: url[process.env.ENV],
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 60000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -234,6 +243,11 @@ exports.config = {
      */
     // afterTest: function(test, context, { error, result, duration, passed, retries }) {
     // },
+    suites: {
+        actions: [
+            './test/actions/*.js'
+        ]
+    },
 
 
     /**

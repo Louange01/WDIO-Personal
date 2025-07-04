@@ -11,6 +11,7 @@
     "chai": "^5.2.0"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "actions": "wdio --suite actions"
   }
 }

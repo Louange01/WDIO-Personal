@@ -5,7 +5,7 @@ import assert from "assert";
 
 describe("Registering a user on the browser", () => {
   it("should Verify that home page is visible successfully", async () => {
-    await browser.url("https://automationexercise.com/");
+    await browser.url(`${browser.options.baseUrl}`)
     assert.equal(await RegisterUser.verifyHomePageVisible(), true);
   });
   it("should click on Signup/Login button", async () => {

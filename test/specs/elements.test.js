@@ -1,3 +1,5 @@
+// ENV=main npx wdio --spec ./test/specs/elements.test.js
+
 import internetPages from "../pageobjects/internet.pages";
 import assert from "assert"
 import loginDetails from "../../data/loginDetails";

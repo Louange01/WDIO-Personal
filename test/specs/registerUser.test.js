@@ -1,4 +1,4 @@
-// npx wdio run ./wdio.conf.js --spec .\test\specs\registerUser.test.js
+// ENV=qa npx wdio --spec ./test/specs/registerUser.test.js
 
 import RegisterUser from "../pageobjects/registerUser.page";
 import assert from "assert";

@@ -14,14 +14,26 @@ class RegisterUser {
   get newUserSignupText() {
     return $("div.signup-form h2");
   }
+  get loginAccountText() {
+    return $('div.login-form h2')
+  }
   get signupNameField() {
     return $('input[data-qa="signup-name"]');
   }
   get signupEmailField() {
     return $('input[data-qa="signup-email"]');
   }
+  get loginPasswordField() {
+    return $('input[data-qa="login-password"]');
+  }
+  get loginEmailField() {
+    return $('input[data-qa="login-email"]');
+  }
   get signupButton() {
     return $('button[data-qa="signup-button"]');
+  }
+  get loginButton() {
+    return $('button[data-qa="login-button"]');
   }
   get enterAccountInfoText() {
     return $("div.login-form h2");
@@ -98,6 +110,13 @@ class RegisterUser {
   get accountDeletedText() {
     return $('h2[data-qa="account-deleted"]');
   }
+  get incorectLoginMessage() {
+    return $('p[style="color: red;"]')
+  }
+  async verifyIncorrectloginMessage() {
+    await this.incorectLoginMessage.waitForDisplayed(1000);
+    return await this.incorectLoginMessage.getText();
+  }
   async verifyHomePageVisible() {
     await this.homePageSlider.waitForDisplayed();
     return await this.homePageSlider.isDisplayed();
@@ -109,12 +128,27 @@ class RegisterUser {
     await this.newUserSignupText.waitForDisplayed();
     return await this.newUserSignupText.isDisplayed();
   }
+
+  async verifyloginAccountTextVisible() {
+    await this.loginAccountText.waitForDisplayed();
+    return await this.loginAccountText.isDisplayed();
+  }
   async enterSignupDetails(name, email) {
     await this.signupNameField.setValue(name);
     await this.signupEmailField.setValue(email);
   }
+  async enterLoginDetails(email, password) {
+    await this.loginEmailField.waitForDisplayed({ timeout: 10000 });
+    await this.loginEmailField.setValue(email);
+    await this.loginPasswordField.setValue(password);
+  }
   async clickSignupButton() {
+    await this.loginButton.waitForDisplayed({ timeout: 10000 });
     await this.signupButton.click();
+  }
+  async clickLoginButton() {
+    await this.loginButton.waitForDisplayed({ timeout: 10000 });
+    await this.loginButton.click();
   }
   async verifyEnterAccountInfoVisible() {
     await this.enterAccountInfoText.waitForDisplayed();

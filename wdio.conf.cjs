@@ -1,7 +1,7 @@
 const url = require("./url.cjs")
 const ENV = process.env.ENV
 
-if (!ENV || !['qa', 'main', 'dev', 'staging'].includes(ENV)) {
+if (!ENV || !['qa', 'iframe', 'main', 'dev', 'staging'].includes(ENV)) {
     console.log('Please use the following format when running the test script: ENV=qa|dev|staging')
     process.exit()
 }

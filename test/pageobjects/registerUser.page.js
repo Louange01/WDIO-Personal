@@ -113,6 +113,9 @@ class RegisterUser {
   get incorectLoginMessage() {
     return $('p[style="color: red;"]')
   }
+  get logoutButton() {
+    return $('a[href="/logout"]');
+  }
   async verifyIncorrectloginMessage() {
     await this.incorectLoginMessage.waitForDisplayed(1000);
     return await this.incorectLoginMessage.getText();
@@ -199,6 +202,10 @@ class RegisterUser {
   async verifyAccountDeleted() {
     await this.accountDeletedText.waitForDisplayed();
     return await this.accountDeletedText.isDisplayed();
+  }
+  async clickLogout() {
+    await this.logoutButton.waitForDisplayed({ timeout: 10000 });
+    await this.logoutButton.click();
   }
 }
 export default new RegisterUser();

@@ -49,6 +49,7 @@ class RegisterUser {
   get successMsg() {
     return $('//div[contains(text(),"Success! Your details have been submitted successfully.")]');
   }
+  get homeBtn() { return $('//a[contains(text(),"Home")]'); }
 
   async verifyIncorrectloginMessage() {
     await this.incorectLoginMessage.waitForDisplayed(1000);
@@ -168,9 +169,19 @@ class RegisterUser {
     // return await this.uploadFile.getValue()
 
   }
-  async clickSubmitButton(){
+  async clickSubmitButton() {
     await this.submitBtn.isDisplayed()
     await this.submitBtn.click()
   }
+  async verifySuccessMessage() {
+    await this.successMsg.waitForDisplayed({ timeout: 10000 })
+    await this.successMsg.isDisplayed()
+    await this.successMsg.getValue()
+  }
+  async clickHomePage() {
+    await this.homeBtn.waitForDisplayed()
+    await this.homeBtn.click()
+  }
+
 }
 export default new RegisterUser();

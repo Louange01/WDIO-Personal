@@ -1,121 +1,55 @@
 class RegisterUser {
-  get signupLoginButton() {
-    return $('a[href="/login"]');
+  get signupLoginButton() { return $('a[href="/login"]'); }
+  get homePageSlider() { return $(".carousel-inner"); }
+  get loggedInAsText() { return $("li:nth-child(10) a"); }
+  get deleteAccountButton() { return $('a[href="/delete_account"]'); }
+  get newUserSignupText() { return $("div.signup-form h2"); }
+  get loginAccountText() { return $('div.login-form h2') }
+  get signupNameField() { return $('input[data-qa="signup-name"]'); }
+  get signupEmailField() { return $('input[data-qa="signup-email"]'); }
+  get loginPasswordField() { return $('input[data-qa="login-password"]'); }
+  get loginEmailField() { return $('input[data-qa="login-email"]'); }
+  get signupButton() { return $('button[data-qa="signup-button"]'); }
+  get loginButton() { return $('button[data-qa="login-button"]'); }
+  get enterAccountInfoText() { return $("div.login-form h2"); }
+  get titleMrRadio() { return $("#id_gender1"); }
+  get titleMrsRadio() { return $("#id_gender2"); }
+  get nameField() { return $("#name"); }
+  get emailField() { return $("#email"); }
+  get passwordField() { return $("#password"); }
+  get dayDropdown() { return $("#days"); }
+  get monthDropdown() { return $("#months"); }
+  get yearDropdown() { return $("#years"); }
+  get newsletterCheckbox() { return $("#newsletter"); }
+  get specialOffersCheckbox() { return $("#optin"); }
+  get firstNameField() { return $("#first_name"); }
+  get lastNameField() { return $("#last_name"); }
+  get companyField() { return $("#company"); }
+  get addressField() { return $("#address1"); }
+  get address2Field() { return $("#address2"); }
+  get countryDropdown() { return $("#country"); }
+  get stateField() { return $("#state"); }
+  get cityField() { return $("#city"); }
+  get zipcodeField() { return $("#zipcode"); }
+  get mobileNumberField() { return $("#mobile_number"); }
+  get createAccountButton() { return $('button[data-qa="create-account"]'); }
+  get accountCreatedText() { return $('h2[data-qa="account-created"]') }
+  get continueButton() { return $('a[data-qa="continue-button"]'); }
+  get accountDeletedText() { return $('h2[data-qa="account-deleted"]'); }
+  get incorectLoginMessage() { return $('p[style="color: red;"]') }
+  get logoutButton() { return $('a[href="/logout"]'); }
+  get contactUsButton() { return $('a[href="/contact_us"]'); }
+  get getInTouchText() { return $('//h2[text()="Get In Touch"]'); }
+  get contactUsNameInput() { return $('input[data-qa="name"]'); }
+  get contactUsEmailInput() { return $('input[data-qa="email"]'); }
+  get contactUsSubjectInput() { return $('input[data-qa="subject"]'); }
+  get messageTextarea() { return $('textarea[data-qa="message"]'); }
+  get uploadFile() { return $('input[name="upload_file"]'); }
+  get submitBtn() { return $('input[data-qa="submit-button"]'); }
+  get successMsg() {
+    return $('//div[contains(text(),"Success! Your details have been submitted successfully.")]');
   }
-  get homePageSlider() {
-    return $(".carousel-inner");
-  }
-  get loggedInAsText() {
-    return $("li:nth-child(10) a");
-  }
-  get deleteAccountButton() {
-    return $('a[href="/delete_account"]');
-  }
-  get newUserSignupText() {
-    return $("div.signup-form h2");
-  }
-  get loginAccountText() {
-    return $('div.login-form h2')
-  }
-  get signupNameField() {
-    return $('input[data-qa="signup-name"]');
-  }
-  get signupEmailField() {
-    return $('input[data-qa="signup-email"]');
-  }
-  get loginPasswordField() {
-    return $('input[data-qa="login-password"]');
-  }
-  get loginEmailField() {
-    return $('input[data-qa="login-email"]');
-  }
-  get signupButton() {
-    return $('button[data-qa="signup-button"]');
-  }
-  get loginButton() {
-    return $('button[data-qa="login-button"]');
-  }
-  get enterAccountInfoText() {
-    return $("div.login-form h2");
-  }
-  get titleMrRadio() {
-    return $("#id_gender1");
-  }
-  get titleMrsRadio() {
-    return $("#id_gender2");
-  }
-  get nameField() {
-    return $("#name");
-  }
-  get emailField() {
-    return $("#email");
-  }
-  get passwordField() {
-    return $("#password");
-  }
-  get dayDropdown() {
-    return $("#days");
-  }
-  get monthDropdown() {
-    return $("#months");
-  }
-  get yearDropdown() {
-    return $("#years");
-  }
-  get newsletterCheckbox() {
-    return $("#newsletter");
-  }
-  get specialOffersCheckbox() {
-    return $("#optin");
-  }
-  get firstNameField() {
-    return $("#first_name");
-  }
-  get lastNameField() {
-    return $("#last_name");
-  }
-  get companyField() {
-    return $("#company");
-  }
-  get addressField() {
-    return $("#address1");
-  }
-  get address2Field() {
-    return $("#address2");
-  }
-  get countryDropdown() {
-    return $("#country");
-  }
-  get stateField() {
-    return $("#state");
-  }
-  get cityField() {
-    return $("#city");
-  }
-  get zipcodeField() {
-    return $("#zipcode");
-  }
-  get mobileNumberField() {
-    return $("#mobile_number");
-  }
-  get createAccountButton() {
-    return $('button[data-qa="create-account"]');
-  }
-  get accountCreatedText() {
-    return $('h2[data-qa="account-created"]');
-  }
-  get continueButton() {
-    return $('a[data-qa="continue-button"]');
-  }
-  get accountDeletedText() {
-    return $('h2[data-qa="account-deleted"]');
-  }
-  get incorectLoginMessage() {
-    return $('p[style="color: red;"]')
-  }
-  get logoutButton() {
-    return $('a[href="/logout"]');
-  }
+
   async verifyIncorrectloginMessage() {
     await this.incorectLoginMessage.waitForDisplayed(1000);
     return await this.incorectLoginMessage.getText();
@@ -206,6 +140,37 @@ class RegisterUser {
   async clickLogout() {
     await this.logoutButton.waitForDisplayed({ timeout: 10000 });
     await this.logoutButton.click();
+  }
+
+  async clickContactUsButton() {
+    await this.contactUsButton.waitForDisplayed()
+    await this.contactUsButton.click();
+  }
+  async verifyGetInTouchText() {
+    await this.getInTouchText.waitForDisplayed()
+    await this.getInTouchText.click()
+  }
+  async fillContactForm(name, email, subject, message) {
+
+    await this.contactUsNameInput.waitForDisplayed();
+    await this.contactUsNameInput.setValue(email);
+    await this.contactUsEmailInput.waitForDisplayed();
+    await this.contactUsEmailInput.setValue(email);
+    await this.contactUsSubjectInput.waitForDisplayed()
+    await this.contactUsSubjectInput.setValue(subject);
+    await this.messageTextarea.waitForDisplayed()
+    await this.messageTextarea.setValue(message);
+  }
+  async checkUploadText() {
+    let path = 'C:\\fakepath\\contactUsFormIMG.png'
+    const finalPath = path.replaceAll('C:\\fakepath\\', ''); // replace the fake path
+    console.log(finalPath);
+    // return await this.uploadFile.getValue()
+
+  }
+  async clickSubmitButton(){
+    await this.submitBtn.isDisplayed()
+    await this.submitBtn.click()
   }
 }
 export default new RegisterUser();

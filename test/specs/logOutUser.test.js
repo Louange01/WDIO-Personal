@@ -1,46 +1,40 @@
 // ENV=qa npx wdio --spec ./test/specs/logOutUser.test.js
-
+import LogOutUser from "../pageobjects/logOutUser.page";
 import RegisterUser from "../pageobjects/registerUser.page";
 import assert from "assert"
 
 describe('login user with correct email and password', () => {
-    // generated a test user object that produces random credentials but remains the same throughout an entire test suite
     let testUser = {
         name: "Louange" + Math.floor(Math.random() * 10000),
         email: "louange" + Math.floor(Math.random() * 10000) + "@gmail.com"
     };
-
     it('should Verify that home page is visible successfully', async () => {
         browser.url(`${browser.options.baseUrl}`)
-        assert.equal(await RegisterUser.verifyHomePageVisible(), true)
+        assert.equal(await RegisterUser.VerifyHomePageVisible(), true)
     })
-
     it("should click on Signup/Login button", async () => {
-        await RegisterUser.clickSignupLogin();
-        assert.equal(await RegisterUser.verifyNewUserSignupVisible(), true);
-        await RegisterUser.enterSignupDetails(testUser.name, testUser.email);
-        await RegisterUser.clickSignupButton();
-        assert.equal(await RegisterUser.verifyEnterAccountInfoVisible(), true);
-        await RegisterUser.fillAccountInformation();
+        await RegisterUser.ClickSignupLogin();
+        assert.equal(await RegisterUser.VerifyNewUserSignupVisible(), true);
+        await RegisterUser.EnterSignupDetails(testUser.name, testUser.email);
+        await RegisterUser.ClickSignupButton();
+        assert.equal(await RegisterUser.VerifyEnterAccountInfoVisible(), true);
+        await RegisterUser.FillAccountInformation();
     });
-
     it("should select newsletter checkbox", async () => {
-        await RegisterUser.selectNewsletterCheckbox();
-        await RegisterUser.selectSpecialOffersCheckbox();
+        await RegisterUser.SelectNewsletterCheckbox();
+        await RegisterUser.SelectSpecialOffersCheckbox();
     });
-
     it("should fill address information details", async () => {
-        await RegisterUser.fillAddressInformation();
-        await RegisterUser.clickCreateAccount();
-        assert.equal(await RegisterUser.verifyAccountCreated(), true);
+        await RegisterUser.FillAddressInformation();
+        await RegisterUser.ClickCreateAccount();
+        assert.equal(await RegisterUser.VerifyAccountCreated(), true);
     });
-
     it("should click Continue button", async () => {
-        await RegisterUser.clickContinue();
-        assert.equal(await RegisterUser.verifyLoggedInAsUser(testUser.name), true);
+        await RegisterUser.ClickContinue();
+        assert.equal(await RegisterUser.VerifyLoggedInAsUser(testUser.name), true);
     });
     it('should click Logout button', async () => {
-        await RegisterUser.clickLogout();
+        await LogOutUser.ClickLogout();
         assert((await browser.getUrl()).includes('login') || (await browser.getUrl()).includes('signin'), 'Should be on login page');
     });
 });

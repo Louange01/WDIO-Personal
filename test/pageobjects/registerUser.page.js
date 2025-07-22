@@ -38,74 +38,62 @@ class RegisterUser {
   get accountDeletedText() { return $('h2[data-qa="account-deleted"]'); }
   get incorectLoginMessage() { return $('p[style="color: red;"]') }
   get logoutButton() { return $('a[href="/logout"]'); }
-  get contactUsButton() { return $('a[href="/contact_us"]'); }
-  get getInTouchText() { return $('//h2[text()="Get In Touch"]'); }
-  get contactUsNameInput() { return $('input[data-qa="name"]'); }
-  get contactUsEmailInput() { return $('input[data-qa="email"]'); }
-  get contactUsSubjectInput() { return $('input[data-qa="subject"]'); }
-  get messageTextarea() { return $('textarea[data-qa="message"]'); }
-  get uploadFile() { return $('input[name="upload_file"]'); }
-  get submitBtn() { return $('input[data-qa="submit-button"]'); }
-  get successMsg() {
-    return $('//div[contains(text(),"Success! Your details have been submitted successfully.")]');
-  }
-  get homeBtn() { return $('//a[contains(text(),"Home")]'); }
 
-  async verifyIncorrectloginMessage() {
+  async VerifyIncorrectloginMessage() {
     await this.incorectLoginMessage.waitForDisplayed(1000);
     return await this.incorectLoginMessage.getText();
   }
-  async verifyHomePageVisible() {
+  async VerifyHomePageVisible() {
     await this.homePageSlider.waitForDisplayed();
     return await this.homePageSlider.isDisplayed();
   }
-  async clickSignupLogin() {
+  async ClickSignupLogin() {
     await this.signupLoginButton.click();
   }
-  async verifyNewUserSignupVisible() {
+  async VerifyNewUserSignupVisible() {
     await this.newUserSignupText.waitForDisplayed();
     return await this.newUserSignupText.isDisplayed();
   }
 
-  async verifyloginAccountTextVisible() {
+  async VerifyloginAccountTextVisible() {
     await this.loginAccountText.waitForDisplayed();
     return await this.loginAccountText.isDisplayed();
   }
-  async enterSignupDetails(name, email) {
+  async EnterSignupDetails(name, email) {
     await this.signupNameField.setValue(name);
     await this.signupEmailField.setValue(email);
   }
-  async enterLoginDetails(email, password) {
+  async EnterLoginDetails(email, password) {
     await this.loginEmailField.waitForDisplayed({ timeout: 10000 });
     await this.loginEmailField.setValue(email);
     await this.loginPasswordField.setValue(password);
   }
-  async clickSignupButton() {
+  async ClickSignupButton() {
     await this.loginButton.waitForDisplayed({ timeout: 10000 });
     await this.signupButton.click();
   }
-  async clickLoginButton() {
+  async ClickLoginButton() {
     await this.loginButton.waitForDisplayed({ timeout: 10000 });
     await this.loginButton.click();
   }
-  async verifyEnterAccountInfoVisible() {
+  async VerifyEnterAccountInfoVisible() {
     await this.enterAccountInfoText.waitForDisplayed();
     return await this.enterAccountInfoText.isDisplayed();
   }
-  async fillAccountInformation() {
+  async FillAccountInformation() {
     await this.titleMrRadio.click();
     await this.passwordField.setValue("Pass@word1");
     await this.dayDropdown.selectByVisibleText("10");
     await this.monthDropdown.selectByVisibleText("October");
     await this.yearDropdown.selectByVisibleText("1995");
   }
-  async selectNewsletterCheckbox() {
+  async SelectNewsletterCheckbox() {
     await this.newsletterCheckbox.click();
   }
-  async selectSpecialOffersCheckbox() {
+  async SelectSpecialOffersCheckbox() {
     await this.specialOffersCheckbox.click();
   }
-  async fillAddressInformation() {
+  async FillAddressInformation() {
     await this.firstNameField.setValue("John");
     await this.lastNameField.setValue("Doe");
     await this.companyField.setValue("Test Company");
@@ -117,71 +105,30 @@ class RegisterUser {
     await this.zipcodeField.setValue("90210");
     await this.mobileNumberField.setValue("+1234567890");
   }
-  async clickCreateAccount() {
+  async ClickCreateAccount() {
     await this.createAccountButton.click();
   }
-  async verifyAccountCreated() {
+  async VerifyAccountCreated() {
     await this.accountCreatedText.waitForDisplayed();
     return await this.accountCreatedText.isDisplayed();
   }
-  async clickContinue() {
+  async ClickContinue() {
     await this.continueButton.click();
   }
-  async verifyLoggedInAsUser(username) {
+  async VerifyLoggedInAsUser(username) {
     await this.loggedInAsText.waitForDisplayed();
     return (await this.loggedInAsText.getText()).includes(username);
   }
-  async clickDeleteAccount() {
+  async ClickDeleteAccount() {
     await this.deleteAccountButton.click();
   }
-  async verifyAccountDeleted() {
+  async VerifyAccountDeleted() {
     await this.accountDeletedText.waitForDisplayed();
     return await this.accountDeletedText.isDisplayed();
   }
-  async clickLogout() {
+  async ClickLogout() {
     await this.logoutButton.waitForDisplayed({ timeout: 10000 });
     await this.logoutButton.click();
   }
-
-  async clickContactUsButton() {
-    await this.contactUsButton.waitForDisplayed()
-    await this.contactUsButton.click();
-  }
-  async verifyGetInTouchText() {
-    await this.getInTouchText.waitForDisplayed()
-    await this.getInTouchText.click()
-  }
-  async fillContactForm(name, email, subject, message) {
-
-    await this.contactUsNameInput.waitForDisplayed();
-    await this.contactUsNameInput.setValue(email);
-    await this.contactUsEmailInput.waitForDisplayed();
-    await this.contactUsEmailInput.setValue(email);
-    await this.contactUsSubjectInput.waitForDisplayed()
-    await this.contactUsSubjectInput.setValue(subject);
-    await this.messageTextarea.waitForDisplayed()
-    await this.messageTextarea.setValue(message);
-  }
-  async checkUploadText() {
-    let path = 'C:\\fakepath\\contactUsFormIMG.png'
-    const finalPath = path.replaceAll('C:\\fakepath\\', ''); // replace the fake path
-    console.log(finalPath);
-    // return await this.uploadFile.getValue()
-
-  }
-  async clickSubmitButton() {
-    await this.submitBtn.isDisplayed()
-    await this.submitBtn.click()
-  }
-  async verifySuccessMessage() {
-    await this.successMsg.waitForDisplayed({ timeout: 10000 })
-    await this.successMsg.isDisplayed()
-    await this.successMsg.getValue()
-  }
-  async clickHomePage() {
-    await this.homeBtn.waitForDisplayed()
-    await this.homeBtn.click()
-  }
-
 }
 export default new RegisterUser();

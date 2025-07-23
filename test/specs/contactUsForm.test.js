@@ -1,4 +1,4 @@
-//ENV=qa npx wdio --spec ./test/specs/contactUsForm.test.js
+//  ENV=qa npx wdio --spec ./test/specs/contactUsForm.test.js
 
 import ContactUsForm from "../pageobjects/contactUsForm.page"
 import assert from "assert"
@@ -17,6 +17,7 @@ describe('succesfully submit a contact Us form ', () => {
         const filePath = "images/contactUsFormIMG.png"
         const remoteFilePath = await browser.uploadFile(filePath)
         await ContactUsForm.uploadFile.setValue(remoteFilePath)
+        assert.equal(await ContactUsForm.CheckUploadText(), 'contactUsFormIMG.png')
     })
     it('should click on the submit button', async () => {
         await ContactUsForm.ClickSubmitButton()

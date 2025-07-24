@@ -17,15 +17,18 @@ describe('Verify All Products and product detail page', () => {
         await VerifyAllProducts.ClickFirstProductViewButton();
     })
 })
-describe.only('Verify product detail page', () => {
+describe('Verify product detail page', () => {
     it('Should User is landed to product detail page', async () => {
         browser.url('https://automationexercise.com/product_details/1')
     })
     it('Should Verify that detail is visible: product name, category, price, availability, condition, brand', async () => {
-        // assert.equal(await VerifyAllProducts.VerifyAllProductDetails(), true)
-        await VerifyAllProducts.VerifyAllProductDetails()
-        assert.equal(await VerifyAllProducts.VerifyAllProductDetails(), 'Blue Top')
-        // assert.equal(await VerifyAllProducts.productName.getText(), 'Blue Top')
-        // assert.equal(await VerifyAllProducts.categoryInfo.getText(),'Category: Women > Tops')
+        const productTexts = await VerifyAllProducts.GetAllProductDetailsArray();
+        console.log(productTexts);
+        assert.equal(productTexts[0], 'Blue Top');
+        assert.equal(productTexts[1], 'Category: Women > Tops');
+        assert.equal(productTexts[2], 'Rs. 500');
+        assert.equal(productTexts[3], 'Brand:');
+        assert.equal(productTexts[4], 'Condition:');
+        assert.equal(productTexts[5], 'Availability:');
     })
 })

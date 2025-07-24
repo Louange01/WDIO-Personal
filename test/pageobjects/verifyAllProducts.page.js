@@ -34,50 +34,54 @@ class VerifyAllProducts {
 
   async VerifyProductName() {
     await this.productName.waitForDisplayed();
-    await this.productName.isDisplayed();
     return await this.productName.getText()
 
   }
   async VerifyCategory() {
     await this.categoryInfo.waitForDisplayed();
-    return await this.categoryInfo.isDisplayed();
-    // await this.categoryInfo.getText();
+    return await this.categoryInfo.getText();
   }
   async VerifyPrice() {
     await this.priceInfo.waitForDisplayed();
-    return await this.priceInfo.isDisplayed();
-    // await this.priceInfo.getText();
+    return await this.priceInfo.getText();
   }
   async VerifyAvailability() {
     await this.availabilityInfo.waitForDisplayed();
-    return this.availabilityInfo.isDisplayed();
-    // await this.availabilityInfo.getText();
+    return await this.availabilityInfo.getText();
 
   }
   async VerifyCondition() {
     await this.conditionInfo.waitForDisplayed();
-    return await this.conditionInfo.isDisplayed();
-    // await this.conditionInfo.getText();
+    return await this.conditionInfo.getText();
   }
   async VerifyBrand() {
     await this.brandInfo.waitForDisplayed();
-    return await this.brandInfo.isDisplayed();
-    // await this.brandInfo.getText();
+    return await this.brandInfo.getText();
   }
   async VerifyProductImage() {
     await this.productImage.waitForDisplayed();
-    return await this.productImage.isDisplayed();
-    // return this.productImage.getText();
+    return this.productImage.getText();
   }
-  async VerifyAllProductDetails() {
-    await this.VerifyProductName();
-    await this.VerifyCategory();
-    await this.VerifyPrice();
-    await this.VerifyAvailability();
-    await this.VerifyCondition();
-    await this.VerifyBrand();
-    await this.VerifyProductImage();
-    console.log('All product details verified successfully!');
+  // async GetAllProductDetailsText() {
+  //   const productDetails = {
+  //     productName: await this.VerifyProductName(),
+  //     category: await this.VerifyCategory(),
+  //     priceInfo: await this.VerifyPrice(),
+  //     brandInfo: await this.VerifyBrand(),
+  //     conditionInfo: await this.VerifyCondition(),
+  //     availability: await this.VerifyAvailability()
+  //   };
+  //   return productDetails;
+  // }
+  async GetAllProductDetailsArray() {
+    return [
+      await this.VerifyProductName(),
+      await this.VerifyCategory(),
+      await this.VerifyPrice(),
+      await this.VerifyBrand(),
+      await this.VerifyCondition(),
+      await this.VerifyAvailability()
+    ];
   }
 }
 export default new VerifyAllProducts();

@@ -6,36 +6,36 @@ import assert from "assert";
 describe("Registering a user on the browser", () => {
   it("should Verify that home page is visible successfully", async () => {
     await browser.url(`${browser.options.baseUrl}`)
-    assert.equal(await RegisterUser.verifyHomePageVisible(), true);
+    assert.equal(await RegisterUser.VerifyHomePageVisible(), true);
   });
   it("should click on Signup/Login button", async () => {
-    await RegisterUser.clickSignupLogin();
-    assert.equal(await RegisterUser.verifyNewUserSignupVisible(), true);
-    await RegisterUser.enterSignupDetails(
+    await RegisterUser.C();
+    assert.equal(await RegisterUser.VerifyNewUserSignupVisible(), true);
+    await RegisterUser.EnterSignupDetails(
       "Louange" + Math.floor(Math.random() * 10000),
       "louange" + Math.floor(Math.random() * 10000) + "louange@rapidtrade.com"
     );
-    await RegisterUser.clickSignupButton();
-    assert.equal(await RegisterUser.verifyEnterAccountInfoVisible(), true);
-    await RegisterUser.fillAccountInformation();
+    await RegisterUser.ClickSignupButton();
+    assert.equal(await RegisterUser.VerifyEnterAccountInfoVisible(), true);
+    await RegisterUser.FillAccountInformation();
   });
   it("should select newsletter checkbox", async () => {
-    await RegisterUser.selectNewsletterCheckbox();
-    await RegisterUser.selectSpecialOffersCheckbox();
+    await RegisterUser.SelectNewsletterCheckbox();
+    await RegisterUser.SelectSpecialOffersCheckbox();
   });
   it("should fill address information details", async () => {
-    await RegisterUser.fillAddressInformation();
-    await RegisterUser.clickCreateAccount();
-    assert.equal(await RegisterUser.verifyAccountCreated(), true);
+    await RegisterUser.FillAddressInformation();
+    await RegisterUser.ClickCreateAccount();
+    assert.equal(await RegisterUser.VerifyAccountCreated(), true);
   });
   it("should click Continue button", async () => {
-    await RegisterUser.clickContinue();
-    assert.equal(await RegisterUser.verifyLoggedInAsUser("Louange"), true);
+    await RegisterUser.ClickContinue();
+    assert.equal(await RegisterUser.VerifyLoggedInAsUser("Louange"), true);
   });
 
   it("should click Delete Account button", async () => {
-    await RegisterUser.clickDeleteAccount();
-    assert.equal(await RegisterUser.verifyAccountDeleted(), true);
-    await RegisterUser.clickContinue();
+    await RegisterUser.ClickDeleteAccount();
+    assert.equal(await RegisterUser.VerifyAccountDeleted(), true);
+    await RegisterUser.ClickContinue();
   });
 });

@@ -34,10 +34,11 @@ class ContactUsForm {
         await this.messageTextarea.setValue(message);
     }
     async CheckUploadText() {
-        let path = 'C:\\fakepath\\contactUsFormIMG.png'
-        const finalPath = path.replaceAll('C:\\fakepath\\', '');
-        console.log(finalPath);
+        let path = await this.uploadFile.getValue()
+        const splitPath = await path.split("C:\\fakepath\\").pop()
+        return splitPath;
     }
+
     async ClickSubmitButton() {
         await this.submitBtn.isDisplayed()
         await this.submitBtn.click()

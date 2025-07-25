@@ -1,4 +1,4 @@
-//ENV=main npx wdio --spec ./test/specs/browserAlerts.test.js  
+//ENV=main npx wdio --spec ./test/specs/browserAlerts.test.js
 
 import BrowserAlerts from "../pageobjects/browserAlerts.page";
 import assert from "assert"

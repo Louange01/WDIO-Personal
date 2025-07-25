@@ -9,14 +9,14 @@ describe("Registering a user on the browser", () => {
     assert.equal(await RegisterUser.VerifyHomePageVisible(), true);
   });
   it("should click on Signup/Login button", async () => {
-    await RegisterUser.clickSignupLogin();
-    assert.equal(await RegisterUser.verifyNewUserSignupVisible(), true);
-    await RegisterUser.enterSignupDetails(
+    await RegisterUser.C();
+    assert.equal(await RegisterUser.VerifyNewUserSignupVisible(), true);
+    await RegisterUser.EnterSignupDetails(
       "Louange" + Math.floor(Math.random() * 10000),
       "louange" + Math.floor(Math.random() * 10000) + "louange@rapidtrade.com"
     );
     await RegisterUser.ClickSignupButton();
-    assert.equal(await RegisterUser.verifyEnterAccountInfoVisible(), true);
+    assert.equal(await RegisterUser.VerifyEnterAccountInfoVisible(), true);
     await RegisterUser.FillAccountInformation();
   });
   it("should select newsletter checkbox", async () => {

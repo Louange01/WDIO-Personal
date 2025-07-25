@@ -62,17 +62,6 @@ class VerifyAllProducts {
     await this.productImage.waitForDisplayed();
     return this.productImage.getText();
   }
-  // async GetAllProductDetailsText() {
-  //   const productDetails = {
-  //     productName: await this.VerifyProductName(),
-  //     category: await this.VerifyCategory(),
-  //     priceInfo: await this.VerifyPrice(),
-  //     brandInfo: await this.VerifyBrand(),
-  //     conditionInfo: await this.VerifyCondition(),
-  //     availability: await this.VerifyAvailability()
-  //   };
-  //   return productDetails;
-  // }
   async GetAllProductDetailsArray() {
     return [
       await this.VerifyProductName(),

@@ -9,7 +9,7 @@ describe("Registering a user on the browser", () => {
     assert.equal(await RegisterUser.VerifyHomePageVisible(), true);
   });
   it("should click on Signup/Login button", async () => {
-    await RegisterUser.C();
+    await RegisterUser.ClickSignupLogin();
     assert.equal(await RegisterUser.VerifyNewUserSignupVisible(), true);
     await RegisterUser.EnterSignupDetails(
       "Louange" + Math.floor(Math.random() * 10000),

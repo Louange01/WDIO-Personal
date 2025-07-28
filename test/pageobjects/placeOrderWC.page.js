@@ -30,7 +30,6 @@ class PlaceOrderWhileCheckout {
     // Order Success Elements
     get deleteAccountButton() { return $('a[href="/delete_account"]'); }
     get accountDeletedMessage() { return $('h2[data-qa="account-deleted"]'); }
-    // get orderSuccessMessage() { return $('p[data-qa="order-placed"]'); }
 
     async IsHomePageVisible() {
         await this.homePageLogo.waitForDisplayed();
@@ -89,10 +88,6 @@ class PlaceOrderWhileCheckout {
         await this.payAndConfirmButton.waitForDisplayed({ timeout: 1000 });
         await this.payAndConfirmButton.click();
     }
-    // async IsOrderSuccessful() {
-    //     await this.orderSuccessMessage.waitForDisplayed();
-    //     return await this.orderSuccessMessage.isDisplayed();
-    // }
     async ClickDeleteAccount() {
         await this.deleteAccountButton.click();
     }

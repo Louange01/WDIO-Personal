@@ -63,9 +63,6 @@ class Internet {
     async ClickCheckboxesLink() {
         await this.checkboxesLink.click();
     }
-    // async ClickCheckbox(index) {
-    //     await this.getCheckbox(index).click();
-    // }
     async IDBCursorsCheckboxSelected(index) {
         return await this.getCheckbox(index).isSelected();
     }

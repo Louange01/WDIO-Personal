@@ -8,6 +8,7 @@ class Assertions {
 
     async ScrollToPageFooter() {
         await this.pageFooter.scrollIntoView();
+        await this.pageFooter.waitForDisplayed();
     }
     async ScrollToElementalSeleniumLink() {
         await this.elementalSeleniumLink.scrollIntoView();

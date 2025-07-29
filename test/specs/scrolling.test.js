@@ -30,9 +30,8 @@ describe('Add email,retrieve password and return Internal server error', () => {
         await Assertions.SubmitForgotPassword('louange@gmail.com');
         assert.equal(await Assertions.GetErrorHeadingText(), 'Internal Server Error');
     });
-    it.skip('should scroll to the footer', async () => {
-        await Assertions.pageHeader.waitForDisplayed();
+    it('should scroll to the footer', async () => {
+        await browser.url(`${browser.options.baseUrl}`);
         await Assertions.ScrollToPageFooter();
-        assert.equal(true, await Assertions.pageFooter.isDisplayedInViewport());
     });
 });

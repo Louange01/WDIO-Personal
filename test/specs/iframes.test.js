@@ -2,11 +2,11 @@
 
 import IframeWindow from "../pageobjects/iframe.page";
 
-describe.skip('Switch Window', () => {
+describe('Switch Window', () => {
     it('Should switch to the next window', async () => {
-        await browser.url(`${browser.options.baseUrl}/window-operations`)
+        await browser.url('https://practice-automation.com/window-operations/')
         await IframeWindow.ClickHereLink()
-        await browser.switchWindow(`${browser.options.baseUrl}/window-operations`)
+        await browser.switchWindow('https://practice-automation.com/window-operations/')
         assert.equal(await IframeWindow.h1Header.isExisting(), true)
         assert.equal(await IframeWindow.h1Header.isDisplayed(), true)
         assert.equal(await IframeWindow.h1Header.getText(), 'Window Operations')

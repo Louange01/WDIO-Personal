@@ -2,11 +2,11 @@ class WaitForExist {
     get exampleButton() { return $('.example button') }
     deleteButton(index) { return $(`#elements button:nth-child(${index})`) }
 
-    async clickExampleButton() {
+    async ClickExampleButton() {
         await this.exampleButton.waitForDisplayed()
         await this.exampleButton.click()
     }
-    async clickDeleteButton(index) {
+    async ClickDeleteButton(index) {
         await this.deleteButton(index).waitForDisplayed()
         await this.deleteButton(index).click()
     }

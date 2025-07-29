@@ -1,3 +1,5 @@
+// ENV=qa npx wdio --spec ./test/specs/placeOrderWC.test.js
+
 import PlaceOrderWhileCheckout from "../pageobjects/placeOrderWC.page";
 import RegisterUser from "../pageobjects/registerUser.page"
 

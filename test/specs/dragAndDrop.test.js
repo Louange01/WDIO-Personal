@@ -1,9 +1,10 @@
+//ENV=main npx wdio --spec ./test/specs/dragAndDrop.test.js
+
 import Dropping from "../pageobjects/dragAndDrop.page";
-import assert from "assert";
 
 describe('drag and dropping', () => {
     it('should drag box a to box b', async () => {
-        browser.url('https://the-internet.herokuapp.com/drag_and_drop');
+        browser.url(`${browser.options.baseUrl}/drag_and_drop`);
         await Dropping.dragboxAToBoxB()
         await browser.pause(2000);
         assert.equal(await Dropping.boxBHeader.getText(), 'A')

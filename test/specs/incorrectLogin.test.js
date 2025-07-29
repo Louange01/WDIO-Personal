@@ -1,6 +1,5 @@
 // ENV=qa npx wdio --spec ./test/specs/incorrectLogin.test.js
 
-import assert from "assert"
 import RegisterUser from "../pageobjects/registerUser.page"
 
 describe('login user with Incorrect email and password', () => {

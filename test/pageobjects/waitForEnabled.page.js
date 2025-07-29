@@ -11,15 +11,15 @@ class WaitForEnabled {
     get pageButton() {
         return $('#checkbox-example button')
     }
-    clickPageButton() {
+    async ClickPageButton() {
         this.pageButton.waitForDisplayed()
         this.pageButton.click()
     }
-    async clickEnableButton() {
+    async ClickEnableButton() {
         await this.enableButton.waitForDisplayed()
         await this.enableButton.click()
     }
-    async clickDisabledButton() {
+    async ClickDisabledButton() {
         await this.disabledbutton.waitForDisplayed()
         await this.disabledbutton.click()
     }

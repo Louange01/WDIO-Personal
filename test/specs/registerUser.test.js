@@ -1,7 +1,6 @@
 // ENV=qa npx wdio --spec ./test/specs/registerUser.test.js
 
 import RegisterUser from "../pageobjects/registerUser.page";
-import assert from "assert";
 
 describe("Registering a user on the browser", () => {
   it("should Verify that home page is visible successfully", async () => {

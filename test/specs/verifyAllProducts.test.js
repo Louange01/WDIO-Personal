@@ -1,6 +1,6 @@
-import { assert } from "chai";
-import VerifyAllProducts from "../pageobjects/verifyAllProducts.page";
+//ENV=qa npx wdio --spec ./test/specs/verifyAllProducts.test.js
 
+import VerifyAllProducts from "../pageobjects/verifyAllProducts.page";
 
 describe('Verify All Products and product detail page', () => {
     it('Should confirm homepage and Click on Products button', async () => {
@@ -8,7 +8,7 @@ describe('Verify All Products and product detail page', () => {
         await VerifyAllProducts.ClickProductButton()
     })
     it('Should Verify user is navigated to ALL PRODUCTS page successfully', async () => {
-        browser.url('https://automationexercise.com/products')
+        browser.url(`${browser.options.baseUrl}/products`)
         await VerifyAllProducts.VerifyAllProductsPageVisible();
         assert.equal(await VerifyAllProducts.VerifyAllProductsPageVisible(), 'ALL PRODUCTS');
     })
@@ -19,7 +19,7 @@ describe('Verify All Products and product detail page', () => {
 })
 describe('Verify product detail page', () => {
     it('Should User is landed to product detail page', async () => {
-        browser.url('https://automationexercise.com/product_details/1')
+        browser.url(`${browser.options.baseUrl}/product_details/1`)
     })
     it('Should Verify that detail is visible: product name, category, price, availability, condition, brand', async () => {
         const productTexts = await VerifyAllProducts.GetAllProductDetailsArray();

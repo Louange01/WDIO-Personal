@@ -6,24 +6,21 @@ class Assertions {
     get heading() { return $('h1'); }
     get elementalSeleniumLink() { return $('a[href="http://elementalselenium.com/"]'); }
 
-    async scrollToPageFooter() {
+    async ScrollToPageFooter() {
         await this.pageFooter.scrollIntoView();
+        await this.pageFooter.waitForDisplayed();
     }
-
-    async scrollToElementalSeleniumLink() {
+    async ScrollToElementalSeleniumLink() {
         await this.elementalSeleniumLink.scrollIntoView();
     }
-
-    async clickElementalSeleniumLink() {
+    async ClickElementalSeleniumLink() {
         await this.elementalSeleniumLink.waitForClickable();
         await this.elementalSeleniumLink.click();
     }
-
-    async verifyElementalSeleniumPage() {
+    async VerifyElementalSeleniumPage() {
         await browser.waitUntil(async () => {
             return (await browser.getUrl()).includes('elementalselenium.com');
         });
-
         await this.heading.waitForDisplayed({ timeout: 5000 });
         return {
             url: await browser.getUrl(),
@@ -31,17 +28,13 @@ class Assertions {
             h1Text: await this.heading.getText()
         };
     }
-    //     async getPoweredByText() {
-    //     return await this.pageFooter.getText();
-    // }
-    async submitForgotPassword(email) {
+    async SubmitForgotPassword(email) {
         await this.emailInput.waitForDisplayed();
         await this.emailInput.setValue(email);
         await this.retrieveBtn.waitForDisplayed();
         await this.retrieveBtn.click();
     }
-
-    async getErrorHeadingText() {
+    async GetErrorHeadingText() {
         await this.heading.waitForDisplayed();
         return await this.heading.getText();
     }

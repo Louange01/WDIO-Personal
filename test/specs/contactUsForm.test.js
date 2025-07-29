@@ -1,7 +1,6 @@
 //  ENV=qa npx wdio --spec ./test/specs/contactUsForm.test.js
 
 import ContactUsForm from "../pageobjects/contactUsForm.page"
-import assert from "assert"
 
 describe('succesfully submit a contact Us form ', () => {
     it('should navigate and confirm home page is visible', async () => {

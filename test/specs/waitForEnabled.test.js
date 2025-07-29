@@ -1,34 +1,35 @@
-import assert from "assert"
+// ENV=main npx wdio --spec ./test/specs/waitForEnabled.test.js
+
 import WaitForEnabled from "../pageobjects/waitForEnabled.page"
 
 describe('Wait For Enabled', () => {
     it('should wait for enabled', async () => {
-        await browser.url('https://the-internet.herokuapp.com/dynamic_controls')
-        await WaitForEnabled.clickEnableButton()
+        await browser.url(`${browser.options.baseUrl}/dynamic_controls`)
+        await WaitForEnabled.ClickEnableButton()
         await WaitForEnabled.inputEnabledField.waitForEnabled({ timeout: 4000 })
         assert.equal(await WaitForEnabled.inputEnabledField.isEnabled(), true)
     })
     it('should wait for the input field to be disabled', async () => {
-        await WaitForEnabled.clickDisabledButton()
+        await WaitForEnabled.ClickDisabledButton()
         await WaitForEnabled.inputEnabledField.waitForEnabled({ reverse: true })
         assert.equal(await WaitForEnabled.inputEnabledField.isEnabled(), false)
     })
 })
-describe.only('WaitUntil', () => {
+describe('WaitUntil', () => {
     it('should wait until the button text changes to Add', async () => {
-        await browser.url('https://the-internet.herokuapp.com/dynamic_controls')
-        await WaitForEnabled.clickPageButton()
+        await browser.url(`${browser.options.baseUrl}/dynamic_controls`)
+        await WaitForEnabled.ClickPageButton()
         browser.waitUntil(async () => {
             return await WaitForEnabled.pageButton.getText() === 'Add'
-        }, 
-        6000, 'Expect button text to change')
+        },
+            6000, 'Expect button text to change')
     })
     it('should wait until the button text changes to Remove', async () => {
-        await WaitForEnabled.clickPageButton()
+        await WaitForEnabled.ClickPageButton()
         browser.waitUntil(async () => {
             return await WaitForEnabled.pageButton.getText() === 'Remove'
-        }, 
-        6000, 'Expect button text to change')
+        },
+            6000, 'Expect button text to change')
         assert.equal(await WaitForEnabled.pageButton.getText(), 'Remove')
     })
 })

@@ -1,7 +1,6 @@
 //ENV=main npx wdio --spec ./test/specs/browserAlerts.test.js
 
 import BrowserAlerts from "../pageobjects/browserAlerts.page";
-import assert from "assert"
 
 describe('Javascript Alerts', () => {
     it('should get text of alert', async () => {

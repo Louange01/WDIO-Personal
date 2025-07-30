@@ -1,6 +1,6 @@
 class IframeWindow {
     get hereLink() { return $('.example a') }
-    get h1Header() { return $('h1') };//[class="hero__title heroTitle_ohkl"]
+    get h1Header() { return $('h1') };
     get iframeBody() { return $("iframe[name='top-iframe']"); }
     get iframeH1() { return $("span[class='highlight_gXVj']"); }
     get iframeBody2() { return $('iframe[name="bottom-iframe"]') }

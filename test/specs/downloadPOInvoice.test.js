@@ -1,6 +1,8 @@
 import PlaceOrderWhileCheckout from "../pageobjects/placeOrderWC.page";
 import RegisterUser from "../pageobjects/registerUser.page"
 import DownloadInvoicePO from "../pageobjects/downloadPOInvoice.page";
+import fs from 'fs';
+import path from 'path';
 
 describe('Fill all details in Signup and create account', () => {
     it('shouldn Navigate to browser', async () => {
@@ -54,10 +56,17 @@ describe('Proceed with the order', () => {
 });
 describe('download purchase order Invoice', () => {
     it('should click on download invoice', async () => {
+        const downloadPath = path.resolve('../../downloads') //.resolve reserves a space for the dowload(invoice) 
+        const filePath = path.join(downloadPath, 'invoice.txt')  //joining path with the invoice
+        console.log(filePath);
         await DownloadInvoicePO.ClickDownloadInvoiceBtn()
-        const invoice = await DownloadInvoicePO.ClickDownloadInvoiceBtn()
-        console.log('invoice downloaded')
-        return invoice
+        await browser.waitUntil(
+            () => fs.existsSync(filePath),
+            {
+                timeout: 5000,
+                timeoutMsg: 'file not found'
+            }
+        )
     })
     it('should Click Delete Account button', async () => {
         await DownloadInvoicePO.ClickContinueBtn()

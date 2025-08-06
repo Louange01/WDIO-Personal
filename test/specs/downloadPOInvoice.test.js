@@ -1,10 +1,12 @@
-// ENV=qa npx wdio --spec ./test/specs/downloadPOInvoice.test.js
+// ENV=qa DOWNLOAD_PATH=images npx wdio run wdio.conf.js --spec ./test/specs/downloadPOInvoice.test.js
 
 import PlaceOrderWhileCheckout from "../pageobjects/placeOrderWC.page";
 import RegisterUser from "../pageobjects/registerUser.page";
 import DownloadInvoicePO from "../pageobjects/downloadPOInvoice.page";
 import fs from "fs";
 import path from "path";
+// import { folderPaths } from "../";
+
 
 describe("Fill all details in Signup and create account", () => {
   it("shouldn Navigate to browser", async () => {
@@ -61,16 +63,17 @@ describe("Proceed with the order", () => {
 describe("download purchase order Invoice", () => {
   it("should click on download invoice", async () => {
     await DownloadInvoicePO.ClickDownloadInvoiceBtn();
-
-    const downloadPath = path.resolve("./downloads");
-    const filePath = path.join(downloadPath, "invoice.txt"); // ./downloads/invoice.txt
-    console.log(filePath);
+    // const downloadPath = path.resolve(folderPaths.invoices);
+    // const filePath = path.join(downloadPath, "invoice.txt"); // ./downloads/invoice.txt
+    // console.log(filePath);
+    const filePath = path.join(global.downloadPath, "invoice.txt"); // use global
+    console.log("Checking folder:", global.downloadPath);
 
     //wait until the file is downloaded and check if the file is downloaded
     await browser.waitUntil(
       () => {
         try {
-          const files = fs.readdirSync(downloadPath);
+          const files = fs.readdirSync(global.downloadPath);
           /**
            * Caters for the following file names:
            * invoice.txt

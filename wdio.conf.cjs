@@ -1,6 +1,11 @@
 const path = require("path");
 const url = require("./url.cjs");
 const ENV = process.env.ENV;
+// const DOWNLOAD_PATH = process.env.ENV;
+const folderPaths = require("./folderPath.cjs");
+const downloadDir = folderPaths[process.env.DOWNLOAD_PATH] || "./downloads/";
+
+
 
 if (!ENV || !["qa", "iframe", "main", "dev", "staging"].includes(ENV)) {
   console.log(
@@ -58,19 +63,23 @@ exports.config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
+
   capabilities: [
     {
       browserName: "chrome",
       "goog:chromeOptions": {
         prefs: {
-          "download.default_directory": path.resolve("./downloads"), // Sets download location to /your-project/downloads
-          "download.prompt_for_download": false, // Prevents the browser from prompting to save the file
-          "download.directory_upgrade": true, // Ensures the download directory is always up to date
-          "safebrowsing.enabled": true, // Enables safe browsing features, Google Chrome scanning for malware
+          "download.default_directory": path.resolve(
+            folderPaths[process.env.DOWNLOAD_PATH] || "./downloads"
+          ),
+          "download.prompt_for_download": false,
+          "download.directory_upgrade": true,
+          "safebrowsing.enabled": true,
         },
       },
     },
   ],
+  // ... rest of your config
 
   //
   // ===================
@@ -233,6 +242,12 @@ exports.config = {
    * beforeEach in Mocha)
    */
   // beforeHook: function (test, context, hookName) {
+  before: function () {
+    const resolvedPath = path.resolve(
+      folderPaths[process.env.DOWNLOAD_PATH] || "./downloads"
+    );
+    global.downloadPath = resolvedPath;
+  },
   // },
   /**
    * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
